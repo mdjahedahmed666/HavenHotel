@@ -3,6 +3,8 @@ import Hero from "../../components/Hero/Hero";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import NewsLetter from "../../components/NewsLetter/NewsLetter";
 import Map from "../../components/Map/Map";
+import SpecialOffer from "../../components/Specialoffer/Specialoffer";
+
 
 const Home = () => {
   const [testimonial, setTestimonial] = useState([]);
@@ -15,6 +17,7 @@ const Home = () => {
   return (
     <div>
       <Hero/>
+      <SpecialOffer/>
       <Testimonial testimonial={testimonial}/>
       <NewsLetter/>
       <Map/>
