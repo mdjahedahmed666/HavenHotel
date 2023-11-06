@@ -98,7 +98,7 @@ setError("")
           error && <span className="text-red-400">{error}</span>
         }
         <div className="label p-5 pt-0">
-          <p>Already have an account?
+          <p className="text-blue-500">Already have an account?
           <Link to="/login" className="text-sm link link-hover mb-4">
                 Login
               </Link>

@@ -5,6 +5,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      rancho: ["Rancho","cursive"],
+      raleway: ["Raleway", "sans-serif"],
+    },
     extend: {},
   },
   plugins: [require("daisyui")],

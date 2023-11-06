@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "A Wonderful Experience",
+        "message": "I had a wonderful experience working with this company. Their professionalism and dedication to quality were truly impressive.",
+        "name": "John Smith",
+        "address": "123 Main Street, Anytown, USA",
+        "image_url": "https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Highly Recommend!",
+        "message": "I highly recommend the services provided by this team. They exceeded my expectations in every way.",
+        "name": "Johnson street",
+        "address": "456 Oak Avenue, Another City, USA",
+        "image_url": "https://i.guim.co.uk/img/media/33c508e9f0c30a90df363e3b5cc3925f0b70f5b6/0_0_3600_2159/master/3600.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=6c1e047f1edc4a54f1770458201ed69e"
+    },
+    {
+        "id": 3,
+        "title": "Outstanding Service",
+        "message": "The level of service and attention to detail I received from this company was outstanding. I couldn't be happier with the results.",
+        "name": "Michael Davis",
+        "address": "789 Elm Road, Someplace, USA",
+        "image_url": "https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg"
+    }
+]

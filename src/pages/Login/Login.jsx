@@ -70,7 +70,7 @@ const Login = () => {
           <div className="flex items-center justify-center gap-4">
             <h4>Continue with</h4>
             <button onClick={handleGoogleLogIn}>
-              <FaGoogle className="text-2xl"/>
+              <FaGoogle className="text-2xl text-yellow-400"/>
             </button>
           </div>
           <div className="label p-5 pt-0">
