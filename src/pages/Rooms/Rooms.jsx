@@ -26,8 +26,9 @@ const Rooms = () => {
             <h2 className="card-title font-rancho">{room.name}</h2>
             <p className="text-lg font-raleway">{room.description}</p>
             <p className="text-lg font-raleway">Price: £{room.price_per_night}/night</p>
-            <Link className="card-actions justify-end">
-              <button className="btn btn-primary">Details More</button>
+            <p className="text-lg font-raleway">Total review: </p>
+            <Link to={`/rooms/${room.name}`} className="card-actions justify-end">
+              <button className="btn btn-primary">Book Now</button>
             </Link>
           </div>
         </div>

@@ -10,7 +10,7 @@ const FeaturedRoom = () => {
       .then((data) => setRoom(data));
   }, []);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 my-36 py-10 container mx-auto px-4 md:px-32">
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-3 my-36 py-10 container mx-auto px-4 md:px-32">
       {room.slice(0, 3).map((room, index) => (
         <div
           key={index}
