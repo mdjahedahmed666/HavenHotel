@@ -4,6 +4,7 @@ import Testimonial from "../../components/Testimonial/Testimonial";
 import NewsLetter from "../../components/NewsLetter/NewsLetter";
 import Map from "../../components/Map/Map";
 import SpecialOffer from "../../components/Specialoffer/Specialoffer";
+import FeaturedRoom from "../../components/FeaturedRoom/FeaturedRoom";
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
   return (
     <div>
       <Hero/>
+      <FeaturedRoom/>
       <SpecialOffer/>
       <Testimonial testimonial={testimonial}/>
       <NewsLetter/>

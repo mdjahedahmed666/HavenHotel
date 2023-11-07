@@ -6,6 +6,7 @@ import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import Home from "../pages/Home/Home";
 import PrivateRoute from "./PrivateRoute";
 import MyBooking from "../pages/MyBooking/MyBooking";
+import Rooms from "../pages/Rooms/Rooms";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
        {
         path: "/",
         element: <Home/>,
+       },
+       {
+        path: "/rooms",
+        element: <Rooms/>,
        },
        {
         path: "/myBooking",
