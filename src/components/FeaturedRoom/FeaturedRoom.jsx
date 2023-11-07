@@ -14,7 +14,7 @@ const FeaturedRoom = () => {
       {room.slice(0, 3).map((room, index) => (
         <div
           key={index}
-          className="card card-compact w-96 bg-base-100 shadow-xl"
+          className="card card-compact bg-base-100 shadow-xl"
         >
           <figure>
             <img
