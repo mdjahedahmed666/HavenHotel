@@ -18,7 +18,7 @@ const FeaturedRoom = () => {
       {room.slice(0, 3).map((room, index) => (
         <div
           key={index}
-          className="card card-compact bg-base-100 shadow-xl"
+          className="card card-compact bg-base-100 shadow-xl transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:z-10 hover:bg-indigo-500 duration-300"
         >
           <figure>
             <img
