@@ -10,7 +10,11 @@ const FeaturedRoom = () => {
       .then((data) => setRoom(data));
   }, []);
   return (
-    <div className="grid gap-4 grid-cols-1 md:grid-cols-3 my-36 py-10 container mx-auto px-4 md:px-32">
+    <div className="container mx-auto px-4 md:px-32  my-28 py-10">
+      <h2 className="font-bold font-rancho text-2xl text-black text-center mb-10">
+        Featured Room
+      </h2>
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
       {room.slice(0, 3).map((room, index) => (
         <div
           key={index}
@@ -32,6 +36,7 @@ const FeaturedRoom = () => {
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 };

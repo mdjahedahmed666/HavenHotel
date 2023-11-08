@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 // import Review from "../../components/Review/Review";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -127,7 +127,7 @@ const RoomDetails = () => {
   <div className="modal-box">
     <h3 className="font-bold text-lg">{name}</h3>
     <p className="py-4">{description}</p>
-    <p className="py-4">{price_per_night}</p>
+    <p className="py-4">Price: £{price_per_night}</p>
     <div className="modal-action">
       <form method="dialog">
         {/* if there is a button in form, it will close the modal */}
