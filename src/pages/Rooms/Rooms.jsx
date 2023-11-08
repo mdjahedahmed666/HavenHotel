@@ -3,8 +3,20 @@ import { Link } from "react-router-dom";
 
 const Rooms = () => {
   const [rooms, setRooms] = useState([]);
+  const [userReview, setUserReview] = useState([]);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(Number.MAX_VALUE);
+  useEffect(() => {
+    fetch("http://localhost:5000/review")
+      .then((res) => res.json())
+      .then((data) => {
+        const userView = data.filter(review => review.name===name);
+        setUserReview(userView);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:5000/rooms")
@@ -53,6 +65,7 @@ const Rooms = () => {
   <div className="card-body">
     <h2 className="card-title">{room.name}</h2>
     <p>{room.description}</p>
+    <p>review{room.description}</p>
     <p>Price: £{room.price_per_night}/night</p>
   </div>
 </Link>

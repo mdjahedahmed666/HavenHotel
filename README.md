@@ -8,7 +8,7 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
-Client side Live Link:
+Client side Live Link:https://assignment-11-3eb50.firebaseapp.com/
 
 
 Here are five key points about the project:
