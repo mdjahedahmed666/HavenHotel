@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyBooking = () => {
   const [myBooking, setMyBooking] = useState([]);
   const { user } = useContext(AuthContext);
   const { email } = user || {};
 
-  const handleDelete = (_id) => {
+  const handleDelete = (_id,name) => {
     console.log(_id);
     Swal.fire({
       title: 'Are you sure?',
@@ -27,6 +28,14 @@ const MyBooking = () => {
       .then((data) =>{
         if(data.deletedCount){
           setMyBooking((remainingCart) => remainingCart.filter((item) => item._id !== _id));
+          
+           fetch(`http://localhost:5000/rooms/${name}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ availability: true }),
+          })
           Swal.fire(
             'Deleted!',
             'Your cart has been deleted.',
@@ -36,6 +45,10 @@ const MyBooking = () => {
       })
       }
     })
+
+  };
+  const handleUpdate = () => {
+console.log(update);
 
   };
   useEffect(() => {
@@ -64,13 +77,16 @@ const MyBooking = () => {
         </h2>
         <p className="mb-4">{item.description}</p>
         <div className="card-actions justify-end">
-          <button onClick={() => handleDelete(item._id) } className="btn btn-outline">Delete Booking</button>
+          <Link to={`/rooms/${item.name}`} className="btn btn-outline">Give a review</Link>
+          <button onClick={() => handleUpdate(item._id,item.name) } className="btn btn-outline">Update Booking</button>
+          <button onClick={() => handleDelete(item._id,item.name) } className="btn btn-error">Delete Booking</button>
         </div>
       </div>
     </div>
     )
   }
   </div>
+  
   </div>
   )
 }

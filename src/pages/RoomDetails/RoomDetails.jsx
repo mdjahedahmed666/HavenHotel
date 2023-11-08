@@ -1,14 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-// import Review from "../../components/Review/Review";
+import Review from "../../components/Review/Review";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const RoomDetails = () => {
   const [room, setRoom] = useState([]);
+  const [hasBookedRoom, setHasBookedRoom] = useState(false);
   const { roomName } = useParams();
   const { user } = useContext(AuthContext);
   const { email } = user || {};
+  const navigate = useNavigate();
+
 
   const {
     name,
@@ -19,6 +22,7 @@ const RoomDetails = () => {
     availability,
     special_offer,
   } = room;
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/rooms/${roomName}`)
@@ -32,6 +36,11 @@ const RoomDetails = () => {
   }, [roomName]);
 
   const handleBookRoom = async () => {
+    if (!user) {
+      // User is not logged in, redirect to login page
+      navigate("/login");
+      return;
+    }
     const roomData = {
       userEmail: email,
       name,
@@ -75,6 +84,7 @@ const RoomDetails = () => {
 
             if (response.status === 200) {
               // Room booked successfully
+              setHasBookedRoom(true);
               setRoom({ ...room, availability: false });
               Swal.fire(
                 "Room booked!",
@@ -105,7 +115,7 @@ const RoomDetails = () => {
 
   return (
     <div className="card card-compact bg-base-100 shadow-xl">
-      <div className="grid grid-cols-1 md:grid-cols-3 my-36 py-10 container mx-auto px-4 md:px-32">
+      <div className="grid grid-cols-1 md:grid-cols-3 my-10 container mx-auto px-4 md:px-32">
         <figure>
           <img src={room_image} alt="Shoes" />
         </figure>
@@ -122,15 +132,14 @@ const RoomDetails = () => {
           {/* <Link to="/rooms" className="card-actions justify-end">
             <button onClick={handleBookRoom} disabled={!room.availability} className="btn btn-primary">Book Now</button>
           </Link> */}
-          <button className="btn btn-primary" onClick={()=>document.getElementById('my_modal_5').showModal()}>Book Now</button>
-<dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+          <button className="btn btn-primary" onClick={()=>document.getElementById('my_modal_1').showModal()}>Book Now</button>
+<dialog id="my_modal_1" className="modal modal-bottom sm:modal-middle">
   <div className="modal-box">
     <h3 className="font-bold text-lg">{name}</h3>
     <p className="py-4">{description}</p>
     <p className="py-4">Price: £{price_per_night}</p>
     <div className="modal-action">
       <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
         <button onClick={handleBookRoom} disabled={!room.availability} className="btn btn-primary">Book</button>
       </form>
     </div>
@@ -138,7 +147,7 @@ const RoomDetails = () => {
 </dialog>
         </div>
       </div>
-      {/* <Review/> */}
+      <Review name={name} hasBookedRoom={hasBookedRoom}/>
     </div>
   );
 };
