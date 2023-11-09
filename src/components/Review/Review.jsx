@@ -5,11 +5,13 @@ import { AuthContext } from "../../providers/AuthProvider";
 const Review = ({ name,hasBookedRoom }) => {
   const [userReview, setUserReview] = useState([]);
   const [userBooked, setUserBooked] = useState([]);
+   // Add loading state
+   const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
   const { email } = user || {};
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/users")
       .then((res) => res.json())
       .then((data) => {
         setUserBooked(data);
@@ -20,14 +22,16 @@ const Review = ({ name,hasBookedRoom }) => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/review")
+    fetch("https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/review")
       .then((res) => res.json())
       .then((data) => {
         const userView = data.filter(review => review.name===name);
         setUserReview(userView);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setLoading(false);
       });
   }, []);
   const handleSubmit = (e) => {
@@ -46,7 +50,7 @@ const Review = ({ name,hasBookedRoom }) => {
     };
 
     //send data to the server
-    fetch("http://localhost:5000/review", {
+    fetch("https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -101,19 +105,25 @@ const Review = ({ name,hasBookedRoom }) => {
         )}
       </div>
       <h2>Customers reviews</h2>
-<div className="grid gap-1 grid-flow-col md:grid-cols-3">
-{userReview.map((item, index) => (
-        <div key={index} className="card bg-yellow-100 shadow-sm">
-          <div className="card-body">
-            <h2 className="card-title">{item.userName}</h2>
-            <p>{item.review}</p>
-            <div className="card-actions justify-end">
-              <p>Rating: {item.rating} out of 5</p>
+      {loading ? (
+        <p>Loading reviews...</p>
+      ) : userReview.length > 0 ? (
+        <div className="grid gap-1 grid-flow-col md:grid-cols-3">
+          {userReview.map((item, index) => (
+            <div key={index} className="card bg-yellow-100 shadow-sm">
+              <div className="card-body">
+                <h2 className="card-title">{item.userName}</h2>
+                <p>{item.review}</p>
+                <div className="card-actions justify-end">
+                  <p>Rating: {item.rating} out of 5</p>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
-</div>
+      ) : (
+        <p>No reviews yet.</p>
+      )}
     </div>
   );
 };

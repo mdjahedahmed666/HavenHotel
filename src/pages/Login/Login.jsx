@@ -30,7 +30,7 @@ const Login = () => {
         }),
           navigate(location.state ? location.state : "/");
           // const user = {email};
-          // axios.post('http://localhost:5000/jwt', user)
+          // axios.post('https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/jwt', user)
           // .then(response =>{
           //   console.log(response.data);
           // })

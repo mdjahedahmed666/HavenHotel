@@ -25,7 +25,7 @@ if (!passwordRegex.test(password)) {
 }
 
 //send data to the server
-fetch('http://localhost:5000/users', {
+fetch('https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/users', {
   method: "POST",
   headers: {
       "content-type": "application/json"

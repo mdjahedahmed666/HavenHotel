@@ -23,7 +23,7 @@ const MyBooking = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bookings/${_id}`, {
+        fetch(`https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/bookings/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -33,12 +33,12 @@ const MyBooking = () => {
                 remainingCart.filter((item) => item._id !== _id)
               );
 
-              fetch(`http://localhost:5000/rooms/${name}`, {
+              fetch(`https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/rooms/${name}`, {
                 method: "PUT",
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ availability: availability + 1 }),
+                body: JSON.stringify({ availability: availability+1 }),
               });
               Swal.fire("Deleted!", "Your cart has been deleted.", "success");
             }
@@ -48,7 +48,7 @@ const MyBooking = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/bookings")
+    fetch("https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/bookings")
       .then((res) => res.json())
       .then((data) => {
         const userBooking = data.filter((user) => user.userEmail === email);
@@ -61,7 +61,7 @@ const MyBooking = () => {
 
   const handleDateUpdate = (item) => {
     // Send a request to update the date
-    fetch(`http://localhost:5000/bookings/${item._id}`, {
+    fetch(`https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/bookings/${item._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -70,9 +70,22 @@ const MyBooking = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.modifiedCount >0) {
+        if (data.modifiedCount > 0) {
+          // Update the date in the UI
+          const updatedBookings = myBooking.map((booking) => {
+            if (booking._id === item._id) {
+              return {
+                ...booking,
+                date: updateDate.toISOString(),
+              };
+            }
+            return booking;
+          });
+
+          setMyBooking(updatedBookings);
+
           Swal.fire("Date Updated", "Booking date has been updated.", "success");
-        } else {
+        }else {
           Swal.fire("Update Failed", "Unable to update the booking date.", "error");
         }
       })

@@ -7,7 +7,7 @@ const Rooms = () => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(Number.MAX_VALUE);
   useEffect(() => {
-    fetch("http://localhost:5000/review")
+    fetch("https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/review")
       .then((res) => res.json())
       .then((data) => {
         setUserReview(data);
@@ -18,7 +18,7 @@ const Rooms = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/rooms")
+    fetch("https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/rooms")
       .then((res) => res.json())
       .then((data) => setRooms(data));
   }, []);

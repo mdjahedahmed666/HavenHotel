@@ -26,7 +26,7 @@ const RoomDetails = () => {
   } = room;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/rooms/${roomName}`)
+    fetch(`https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/rooms/${roomName}`)
       .then((res) => res.json())
       .then((data) => {
         setRoom(data);
@@ -65,7 +65,7 @@ const RoomDetails = () => {
       room_image,
       availability: availability-1,
     };
-    fetch(`http://localhost:5000/rooms/${roomName}`, {
+    fetch(`https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/rooms/${roomName}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -88,7 +88,7 @@ const RoomDetails = () => {
         if (result.isConfirmed) {
           try {
             const response = await fetch(
-              `http://localhost:5000/rooms/${roomName}`,
+              `https://havenserver-f87bz3knk-mdjahedahmed12-gmailcom.vercel.app/rooms/${roomName}`,
               {
                 method: "PUT",
                 headers: {
