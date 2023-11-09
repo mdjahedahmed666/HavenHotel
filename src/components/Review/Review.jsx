@@ -108,7 +108,7 @@ const Review = ({ name,hasBookedRoom }) => {
             <h2 className="card-title">{item.userName}</h2>
             <p>{item.review}</p>
             <div className="card-actions justify-end">
-              <p>Rating: {item.rating}</p>
+              <p>Rating: {item.rating} out of 5</p>
             </div>
           </div>
         </div>

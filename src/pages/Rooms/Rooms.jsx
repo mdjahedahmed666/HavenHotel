@@ -24,7 +24,8 @@ const Rooms = () => {
   }, []);
   const filterRoomsByPrice = () => {
     return rooms.filter(
-      (room) => room.price_per_night >= minPrice && room.price_per_night <= maxPrice
+      (room) =>
+        room.price_per_night >= minPrice && room.price_per_night <= maxPrice
     );
   };
   const getTotalReviews = (roomName) => {
@@ -33,7 +34,9 @@ const Rooms = () => {
   };
   return (
     <div className="container mx-auto px-4 md:px-32 my-10">
-      <h2 className="font-bold font-rancho text-2xl">Filter Room by price range</h2>
+      <h2 className="font-bold font-rancho text-2xl">
+        Filter Room by price range
+      </h2>
       <div>
         <div className="form-control">
           <label className="label">
@@ -60,20 +63,25 @@ const Rooms = () => {
           />
         </div>
       </div>
-          <div className="grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10">
-
-      {filterRoomsByPrice().map((room, index) => (
-        <Link to={`/rooms/${room.name}`} key={index} className="card bg-base-100 shadow-xl image-full">
-  <figure><img src={room.room_image} alt={room.name} /></figure>
-  <div className="card-body">
-    <h2 className="card-title">{room.name}</h2>
-    <p>{room.description}</p>
-    <p>Review: {getTotalReviews(room.name)}</p>
-    <p>Price: £{room.price_per_night}/night</p>
-  </div>
-</Link>
-      ))}
-    </div>
+      <div className="grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10">
+        {filterRoomsByPrice().map((room, index) => (
+          <Link
+            to={`/rooms/${room.name}`}
+            key={index}
+            className="card bg-base-100 shadow-xl image-full"
+          >
+            <figure>
+              <img src={room.room_image} alt={room.name} />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{room.name}</h2>
+              <p>{room.description}</p>
+              <p>Review: {getTotalReviews(room.name)}</p>
+              <p>Price: £{room.price_per_night}/night</p>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
