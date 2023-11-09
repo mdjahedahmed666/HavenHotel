@@ -63,6 +63,7 @@ const RoomDetails = () => {
       price_per_night,
       room_size,
       room_image,
+      availability: availability-1,
     };
     fetch(`http://localhost:5000/rooms/${roomName}`, {
       method: "POST",
