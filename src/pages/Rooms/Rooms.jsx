@@ -10,8 +10,7 @@ const Rooms = () => {
     fetch("http://localhost:5000/review")
       .then((res) => res.json())
       .then((data) => {
-        const userView = data.filter(review => review.name===name);
-        setUserReview(userView);
+        setUserReview(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -27,6 +26,10 @@ const Rooms = () => {
     return rooms.filter(
       (room) => room.price_per_night >= minPrice && room.price_per_night <= maxPrice
     );
+  };
+  const getTotalReviews = (roomName) => {
+    const roomReviews = userReview.filter((review) => review.name === roomName);
+    return roomReviews.length;
   };
   return (
     <div className="container mx-auto px-4 md:px-32 my-10">
@@ -65,7 +68,7 @@ const Rooms = () => {
   <div className="card-body">
     <h2 className="card-title">{room.name}</h2>
     <p>{room.description}</p>
-    <p>review{room.description}</p>
+    <p>Review: {getTotalReviews(room.name)}</p>
     <p>Price: £{room.price_per_night}/night</p>
   </div>
 </Link>
