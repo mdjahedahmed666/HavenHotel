@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.6.1",
     "dotenv": "^16.3.1",
     "firebase": "^10.5.2",
     "google-map-react": "^2.2.1",

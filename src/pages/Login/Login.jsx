@@ -29,6 +29,11 @@ const Login = () => {
           confirmButtonText: "ok",
         }),
           navigate(location.state ? location.state : "/");
+          // const user = {email};
+          // axios.post('http://localhost:5000/jwt', user)
+          // .then(response =>{
+          //   console.log(response.data);
+          // })
       })
       .catch((error) => {
         console.error(error);
